@@ -8,6 +8,12 @@ app.listen(3000, function() {
 });
 
 app.get('/api/songs',(req,res)=>{
-    const songs=repoContext.songs.findAllSongs();
+    const songs = repoContext.songs.findAllSongs();
+    return res.send(songs);
+});
+
+app.get('/api/songs/:id',(req,res)=>{
+    const id = req.params.id;
+    const songs = repoContext.songs.findSongById(id);
     return res.send(songs);
 });
